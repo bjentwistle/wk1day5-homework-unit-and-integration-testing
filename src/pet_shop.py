@@ -12,7 +12,8 @@ def get_total_cash(pet_shop):
 #change the value of total cash
 def add_or_remove_cash(pet_shop, money):
     pet_shop["admin"]["total_cash"] = pet_shop["admin"]["total_cash"] + money
-    return pet_shop["admin"]["total_cash"]
+    # pet_shop["admin"]["total_cash"] += amount   this is shorthand for above line!
+    return pet_shop["admin"]["total_cash"] #doesn't need to return
 
 #return list of pets sold
 def get_pets_sold(pet_shop):
@@ -21,7 +22,8 @@ def get_pets_sold(pet_shop):
 # Increase the number of pets sold in pet shop
 def increase_pets_sold(pet_shop, num_of_pets):
     pet_shop["admin"]["pets_sold"] = pet_shop["admin"]["pets_sold"] + num_of_pets
-    return pet_shop["admin"]["pets_sold"]
+    # pet_shop["admin"]["pets_sold"] += num_of_pets   this is shorthand for above line!
+    return pet_shop["admin"]["pets_sold"] # return not needed here!
 
 # check the stock count of pets
 def get_stock_count(pet_shop):
@@ -33,7 +35,7 @@ def get_pets_by_breed(pet_shop, breed):
     for i in range(len(pet_shop["pets"])):
         if pet_shop["pets"][i]["breed"] == breed:
             pets.append(pet_shop["pets"][i]) #forgot to add index i & 
-                                            #using append return value which is actually None!
+                                        #using append return value which is actually None!
             #print(pets)
     return pets
 
@@ -63,7 +65,6 @@ def get_customer_cash(customer):
 def remove_customer_cash(customer, amount):
     customer["cash"] = customer["cash"] - amount
 
-
 def get_customer_pet_count(customer):
     return len(customer["pets"])
 
@@ -78,11 +79,11 @@ def customer_can_afford_pet(customer, new_pet):
         return True
     else:
         return False
-    
+    #short hand - this could be one line
+    # return customer["cash"] >= new_pet["price"]
 
 # These are 'integration' tests so we want multiple asserts.
 # If one fails the entire test should fail
-#
 
 def sell_pet_to_customer(pet_shop, pet, customer): #feeds in Arthur, Alice & shop
     if pet == None: #checks that pet exists in list
